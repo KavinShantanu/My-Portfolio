@@ -346,11 +346,11 @@
             if (satellites.length < 1) { 
                 satellites.push({
                     x: canvas.width + 100,
-                    y: Math.random() * canvas.height * 0.3,
-                    speed: Math.random() * 0.3 + 0.25, 
+                    y: Math.random() * canvas.height * 0.25,
+                    speed: Math.random() * 0.35 + 0.25, 
                     dx: -1.6, 
-                    dy: 0.55,
-                    spin: Math.random() * Math.PI * 2 // Randomized structural startup rotation angle
+                    dy: 0.5,
+                    3dAngle: Math.random() * Math.PI // Tracking seed angle for perspective shifts
                 });
             }
         }
@@ -407,63 +407,77 @@
                 ctx.fill();
             }
 
-            // High-Definition Micro ISS Space Station Satellite (50% Smaller + Real Rotational Spin Engine)
+            // High-Definition Micro ISS Space Station Satellite (With True 3D Perspective Rotational Yaw Engine)
             if (Math.random() < 0.004) createSatellite();
             for (let i = satellites.length - 1; i >= 0; i--) {
                 let sat = satellites[i];
                 sat.x += sat.speed * sat.dx;
                 sat.y += sat.speed * sat.dy;
-                sat.spin += 0.1; // Real subtle orbital rotative twist velocity vector applied every frame update
+                sat.3dAngle += 0.012; // Controls the pacing of the perspective inversion loop
 
                 if (sat.x < -150 || sat.y > canvas.height + 150) {
                     satellites.splice(i, 1);
                     continue;
                 }
 
+                // Calculate the 3D perspective width compression factor using a cosine wave
+                let perspectiveWidth = Math.cos(sat.3dAngle);
+
                 ctx.save();
                 ctx.translate(sat.x, sat.y);
-                
-                // Absolute structural path direction angle integrated together with the rotative spin vectors
-                ctx.rotate(Math.atan2(sat.dy, Math.dx) + Math.PI + sat.spin); 
+                // Locks the tracking orientation angle into the diagonal trajectory
+                ctx.rotate(Math.atan2(sat.dy, Math.dx) + Math.PI); 
 
-                // Micro Silhouette structure vectors - exactly 50% scaling metrics applied
-                ctx.fillStyle = 'rgba(241, 245, 249, 0.7)'; 
-                ctx.strokeStyle = 'rgba(241, 245, 249, 0.8)';
-                ctx.lineWidth = 0.6; // Muted line thickness layout
+                // Micro Silhouette structures - Exactly 50% scaling blueprint profiles applied
+                ctx.fillStyle = 'rgba(241, 245, 249, 0.75)'; 
+                ctx.strokeStyle = 'rgba(241, 245, 249, 0.85)';
+                ctx.lineWidth = 0.6;
 
-                // 1. Central Lab Truss Spar Line (Reduced from 50px width span right down to 24px)
+                // 1. Central Laboratory Truss Spar Line
                 ctx.beginPath();
                 ctx.moveTo(-12, 0);
                 ctx.lineTo(12, 0);
                 ctx.stroke();
 
-                // 2. Micro Pressurized Lab Core Architecture Modules
+                // 2. Micro Habitation Core Pressure Node
                 ctx.fillRect(-3, -1.5, 6, 3);
                 ctx.fillRect(-1, -2.5, 2, 5);
 
-                // 3. Right Symmetrical Array Wing Structure Plates
-                ctx.fillStyle = 'rgba(148, 163, 184, 0.35)'; 
-                ctx.fillRect(6, -7, 2, 5);
-                ctx.fillRect(6, 2, 2, 5);
-                ctx.fillRect(9, -7, 2, 5);
-                ctx.fillRect(9, 2, 2, 5);
+                // --- ADVANCED 3D PERSPECTIVE SOLAR WINGS LAYER ---
+                ctx.fillStyle = 'rgba(148, 163, 184, 0.35)'; // Reflective photovoltaic transparency profile
 
-                // 4. Left Symmetrical Array Wing Structure Plates
-                ctx.fillRect(-8, -7, 2, 5);
-                ctx.fillRect(-8, 2, 2, 5);
-                ctx.fillRect(-11, -7, 2, 5);
-                ctx.fillRect(-11, 2, 2, 5);
+                // Apply perspective factor to the horizontal positioning and panel width mapping
+                let rightWingX1 = 6 * perspectiveWidth;
+                let rightWingX2 = 9 * perspectiveWidth;
+                let leftWingX1 = -8 * perspectiveWidth;
+                let leftWingX2 = -11 * perspectiveWidth;
+                let wingW = 2 * Math.abs(perspectiveWidth);
 
-                // 5. Structural Wire Outline Frame Overlays
-                ctx.strokeStyle = 'rgba(148, 163, 184, 0.4)';
-                ctx.strokeRect(6, -7, 2, 5);
-                ctx.strokeRect(6, 2, 2, 5);
-                ctx.strokeRect(9, -7, 2, 5);
-                ctx.strokeRect(9, 2, 2, 5);
-                ctx.strokeRect(-8, -7, 2, 5);
-                ctx.strokeRect(-8, 2, 2, 5);
-                ctx.strokeRect(-11, -7, 2, 5);
-                ctx.strokeRect(-11, 2, 2, 5);
+                // Re-adjust module rendering if array metrics flip inside negative dimensions (true flip rotation)
+                if (wingW > 0.1) {
+                    // Right Wing Solar Panels
+                    ctx.fillRect(rightWingX1, -7, wingW, 5);
+                    ctx.fillRect(rightWingX1, 2, wingW, 5);
+                    ctx.fillRect(rightWingX2, -7, wingW, 5);
+                    ctx.fillRect(rightWingX2, 2, wingW, 5);
+
+                    // Left Wing Solar Panels
+                    ctx.fillRect(leftWingX1, -7, wingW, 5);
+                    ctx.fillRect(leftWingX1, 2, wingW, 5);
+                    ctx.fillRect(leftWingX2, -7, wingW, 5);
+                    ctx.fillRect(leftWingX2, 2, wingW, 5);
+
+                    // Outrigger Structural Borders
+                    ctx.strokeStyle = 'rgba(148, 163, 184, 0.4)';
+                    ctx.strokeRect(rightWingX1, -7, wingW, 5);
+                    ctx.strokeRect(rightWingX1, 2, wingW, 5);
+                    ctx.strokeRect(rightWingX2, -7, wingW, 5);
+                    ctx.strokeRect(rightWingX2, 2, wingW, 5);
+                    ctx.strokeRect(leftWingX1, -7, wingW, 5);
+                    ctx.strokeRect(leftWingX1, 2, wingW, 5);
+                    ctx.strokeRect(leftWingX2, -7, wingW, 5);
+                    ctx.strokeRect(leftWingX2, 2, wingW, 5);
+                }
 
                 ctx.restore();
             }
