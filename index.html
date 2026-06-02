@@ -413,7 +413,7 @@
                 let sat = satellites[i];
                 sat.x += sat.speed * sat.dx;
                 sat.y += sat.speed * sat.dy;
-                sat.spin += 0.02; // Real subtle orbital rotative twist velocity vector applied every frame update
+                sat.spin += 0.1; // Real subtle orbital rotative twist velocity vector applied every frame update
 
                 if (sat.x < -150 || sat.y > canvas.height + 150) {
                     satellites.splice(i, 1);
