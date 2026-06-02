@@ -157,13 +157,13 @@
                     <h4 class="text-slate-400 text-base font-medium mb-4">VMO2</h4>
                 </div>
                 <div class="w-full md:w-[48%] pl-10 md:pl-0 bg-gray-900 border border-gray-800 p-8 rounded-xl text-slate-300 text-base space-y-5 mt-2 md:mt-0 shadow-lg relative z-10 hover:bg-gradient-to-br hover:from-gray-900 hover:to-emerald-950/40 hover:border-emerald-500/30 transition-all duration-500">
-                    <p class="border-l-2 border-slate-800 pl-4 group-hover:border-emerald-400 transition-colors leading-relaxed">
+                    <p class="border-l-2 border-gray-800 pl-4 group-hover:border-emerald-400 transition-colors leading-relaxed">
                         Managed the complete E2E testing lifecycle for complex technical deployments, validating test data setup and handling high-impact delivery procedures.
                     </p>
-                    <p class="border-l-2 border-slate-800 pl-4 group-hover:border-emerald-400 transition-colors leading-relaxed">
+                    <p class="border-l-2 border-gray-800 pl-4 group-hover:border-emerald-400 transition-colors leading-relaxed">
                         Validated core telecom operations like MPN Portability and Migration by applying automated verification environments.
                     </p>
-                    <p class="border-l-2 border-slate-800 pl-4 group-hover:border-emerald-400 transition-colors leading-relaxed">
+                    <p class="border-l-2 border-gray-800 pl-4 group-hover:border-emerald-400 transition-colors leading-relaxed">
                         Monitored infrastructure architectures via Netcracker systems logs and verified underlying functionality using Selenium, Postman, and SoapUI.
                     </p>
                 </div>
@@ -184,7 +184,7 @@
                     <p class="border-l-2 border-slate-800 pl-4 group-hover:border-emerald-400 transition-colors leading-relaxed">
                         Delivered cross-browser verification maps across adaptive mobile distributions including dedicated iOS and Android systems.
                     </p>
-                    <p class="border-l-2 border-gray-800 pl-4 group-hover:border-emerald-400 transition-colors leading-relaxed">
+                    <p class="border-l-2 border-slate-800 pl-4 group-hover:border-emerald-400 transition-colors leading-relaxed">
                         Tracked active deployments and anomalies across infrastructure pipelines using Rally, Jira, Swagger, and Kibana engines.
                     </p>
                 </div>
@@ -239,10 +239,9 @@
         </div>
     </section>
 
-    <!-- Contact Section (FIXED AS PER IMAGE_3C641E.PNG) -->
-    <section id="contact" class="reveal-section py-40 max-w-7xl mx-auto px-6 relative z-10">
-        <!-- Content tile shielding layer blocks background constellation overlaps perfectly -->
-        <div class="max-w-4xl mx-auto text-center bg-gray-900/90 border border-gray-800 p-12 md:p-16 rounded-2xl shadow-2xl hover:bg-gradient-to-br hover:from-gray-900 hover:to-emerald-950/40 hover:border-emerald-500/30 transition-all duration-500">
+    <!-- Contact Section (FLUSHED & TRANSLUCENT LOOK MATCHING THE HERO INTRO) -->
+    <section id="contact" class="reveal-section py-40 max-w-7xl mx-auto px-6 relative z-10 border-t border-gray-900">
+        <div class="max-w-4xl mx-auto text-center bg-gray-950/40 backdrop-blur-sm p-12 md:p-16 rounded-2xl relative z-10">
             <span class="text-emerald-400 font-mono text-base tracking-widest uppercase block mb-4 font-bold">What's Next?</span>
             <h2 class="text-5xl font-bold text-slate-100 mb-6">Get In Touch</h2>
             <p class="text-slate-300 mb-10 text-lg max-w-xl mx-auto leading-relaxed">
@@ -255,7 +254,7 @@
             </div>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
                 <a href="mailto:kavinshantanu.1703035@srec.ac.in" class="w-full sm:w-auto px-10 py-4 border border-emerald-400 text-emerald-400 font-bold rounded hover:bg-emerald-400/10 transition-all font-mono tracking-wide text-base">Say Hello</a>
-                <a href="resume.pdf" download="Kavin_Shantanu_Resume.pdf" class="w-full sm:w-auto px-8 py-4 bg-slate-950 border border-slate-800 text-slate-300 font-mono text-xs tracking-wider uppercase rounded font-bold hover:border-emerald-500/40 transition-all flex items-center justify-center gap-2">
+                <a href="resume.pdf" download="Kavin_Shantanu_Resume.pdf" class="w-full sm:w-auto px-8 py-4 bg-slate-900/60 border border-slate-800 text-slate-300 font-mono text-xs tracking-wider uppercase rounded font-bold hover:border-emerald-500/40 transition-all flex items-center justify-center gap-2">
                     <i class="fa-solid fa-download text-sm"></i> Download CV
                 </a>
             </div>
@@ -272,7 +271,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- Upgraded Deep Space Animation Script -->
+    <!-- Upgraded Deep Space Animation Script with Diagonal Satellites -->
     <script>
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
@@ -280,6 +279,7 @@
         let stars = [];
         let shootingStars = [];
         let comets = [];
+        let satellites = [];
         const numAmbients = 85; 
 
         function getRandomStellarColor() {
@@ -362,6 +362,20 @@
             }
         }
 
+        // Factory function for high-altitude diagonal satellites moving right to left
+        function createSatellite() {
+            if (satellites.length < 1) { // Minimalist limit cap
+                satellites.push({
+                    x: canvas.width + 50,
+                    y: Math.random() * canvas.height * 0.4,
+                    speed: Math.random() * 0.4 + 0.3, // Slow orbital velocity tracking
+                    dx: -1.5, // Moving firmly right to left
+                    dy: 0.6,   // Moving subtly downwards diagonally
+                    pulsePhase: 0
+                });
+            }
+        }
+
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
@@ -411,6 +425,42 @@
                 ctx.fillStyle = 'rgba(240, 249, 255, 0.8)';
                 ctx.beginPath();
                 ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Satellite Tracking Engine Loop (Right to Left Diagonal)
+            if (Math.random() < 0.005) createSatellite();
+            for (let i = satellites.length - 1; i >= 0; i--) {
+                let sat = satellites[i];
+                sat.x += sat.speed * sat.dx;
+                sat.y += sat.speed * sat.dy;
+                sat.pulsePhase += 0.05;
+
+                // Splice out if out of boundaries
+                if (sat.x < -50 || sat.y > canvas.height + 50) {
+                    satellites.splice(i, 1);
+                    continue;
+                }
+
+                // Render faint minimalist path track line
+                ctx.strokeStyle = 'rgba(148, 163, 184, 0.03)';
+                ctx.lineWidth = 0.8;
+                ctx.beginPath();
+                ctx.moveTo(sat.x + 150, sat.y - 60);
+                ctx.lineTo(sat.x - 150, sat.y + 60);
+                ctx.stroke();
+
+                // Intermittent pulse emission glow
+                let pulse = 0.3 + (Math.sin(sat.pulsePhase) + 1) * 0.35;
+                ctx.fillStyle = `rgba(56, 189, 248, ${pulse * 0.4})`;
+                ctx.beginPath();
+                ctx.arc(sat.x, sat.y, 3.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Crisp pinpoint core node
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+                ctx.beginPath();
+                ctx.arc(sat.x, sat.y, 1.2, 0, Math.PI * 2);
                 ctx.fill();
             }
 
