@@ -44,7 +44,7 @@
         <div class="text-center max-w-3xl">
             <span class="text-emerald-400 font-mono text-sm tracking-widest uppercase block mb-3 animate-pulse">Hi, my name is</span>
             <h1 class="text-5xl md:text-7xl font-extrabold text-slate-100 tracking-tight mb-4">Kavin Shantanu</h1>
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-400 mb-6">I Quality Engineer</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-400 mb-6">Quality Engineer</h2>
             <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
                 ISTQB Certified Quality Engineer specializing in End-to-End (E2E) testing, API validation, and scalable test automation frameworks. Leveraging modern AI accelerators to optimize execution matrices.
             </p>
@@ -232,18 +232,33 @@
         let comets = [];
         const numAmbients = 65; 
 
-        // Constellation Configuration
+        // Custom function to allocate colors based on user's exact probability weights
+        function getRandomConstellationColor() {
+            const roll = Math.random();
+            if (roll < 0.5714) {
+                // 57.14% Blue-White
+                return { core: 'rgba(224, 242, 254, ', halo: 'rgba(56, 189, 248, ' };
+            } else if (roll < 0.5714 + 0.2857) {
+                // 28.57% Red Giant Spectrum
+                return { core: 'rgba(fee2e2, ', halo: 'rgba(ef4444, ' };
+            } else {
+                // 14.29% Warm Yellow-Orange
+                return { core: 'rgba(fef3c7, ', halo: 'rgba(f59e0b, ' };
+            }
+        }
+
+        // Configuration mapping: Castor & Pollux are hard-coded, others pull randomly from the weights
         const geminiStars = [
-            { name: 'Castor', cx: 0.42, cy: 0.28, r: 4.5, speed: 0.02 },
-            { name: 'Pollux', cx: 0.46, cy: 0.34, r: 5.5, speed: 0.015 },
-            { name: 'Mebsuta', cx: 0.35, cy: 0.36, r: 3.2, speed: 0.03 },
-            { name: 'Tejat Posterior', cx: 0.31, cy: 0.44, r: 3.0, speed: 0.025 },
-            { name: 'Propus', cx: 0.27, cy: 0.46, r: 2.2, speed: 0.04 },
-            { name: 'Alhena', cx: 0.36, cy: 0.58, r: 4.2, speed: 0.018 },
-            { name: 'Alzirr', cx: 0.40, cy: 0.61, r: 2.8, speed: 0.03 },
-            { name: 'Wasat', cx: 0.44, cy: 0.45, r: 3.5, speed: 0.022 },
-            { name: 'Mekbuda', cx: 0.41, cy: 0.51, r: 3.1, speed: 0.028 },
-            { name: 'Gomeisa-prox', cx: 0.51, cy: 0.54, r: 2.5, speed: 0.035 }
+            { name: 'Castor', cx: 0.42, cy: 0.28, r: 5.0, speed: 0.02, colors: { core: 'rgba(248, 250, 252, ', halo: 'rgba(14, 165, 233, ' } }, // Brilliant Blue-White
+            { name: 'Pollux', cx: 0.46, cy: 0.34, r: 6.5, speed: 0.015, colors: { core: 'rgba(fff7ed, ', halo: 'rgba(249, 115, 22, ' } }, // Golden Yellow-Orange
+            { name: 'Mebsuta', cx: 0.35, cy: 0.36, r: 3.2, speed: 0.03, colors: getRandomConstellationColor() },
+            { name: 'Tejat Posterior', cx: 0.31, cy: 0.44, r: 3.0, speed: 0.025, colors: getRandomConstellationColor() },
+            { name: 'Propus', cx: 0.27, cy: 0.46, r: 2.2, speed: 0.04, colors: getRandomConstellationColor() },
+            { name: 'Alhena', cx: 0.36, cy: 0.58, r: 4.2, speed: 0.018, colors: getRandomConstellationColor() },
+            { name: 'Alzirr', cx: 0.40, cy: 0.61, r: 2.8, speed: 0.03, colors: getRandomConstellationColor() },
+            { name: 'Wasat', cx: 0.44, cy: 0.45, r: 3.5, speed: 0.022, colors: getRandomConstellationColor() },
+            { name: 'Mekbuda', cx: 0.41, cy: 0.51, r: 3.1, speed: 0.028, colors: getRandomConstellationColor() },
+            { name: 'Gomeisa-prox', cx: 0.51, cy: 0.54, r: 2.5, speed: 0.035, colors: getRandomConstellationColor() }
         ];
 
         const geminiBones = [
@@ -275,23 +290,21 @@
             });
         }
 
-        // Factory function for high-speed Shooting Stars
         function createShootingStar() {
             shootingStars.push({
                 x: Math.random() * canvas.width * 0.8,
                 y: Math.random() * canvas.height * 0.4,
                 len: Math.random() * 80 + 40,
                 speed: Math.random() * 12 + 8,
-                dx: Math.random() * 4 + 4, // Always paths down-right
+                dx: Math.random() * 4 + 4, 
                 dy: Math.random() * 3 + 2,
                 opacity: 1,
                 fade: Math.random() * 0.02 + 0.015
             });
         }
 
-        // Factory function for rare, slow-moving majestic Comets
         function createComet() {
-            if (comets.length < 1) { // Cap at one visible at a time to stay minimalist
+            if (comets.length < 1) { 
                 comets.push({
                     x: -100,
                     y: Math.random() * canvas.height * 0.3,
@@ -307,7 +320,7 @@
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // 1. Static/Twinkling Ambient Layer
+            // 1. Ambient Background Layer
             stars.forEach(s => {
                 s.phase += s.speed;
                 let alpha = 0.15 + (Math.sin(s.phase) + 1) * 0.4;
@@ -317,8 +330,8 @@
                 ctx.fill();
             });
 
-            // 2. Dynamic Shooting Stars Updates & Rendering
-            if (Math.random() < 0.015) createShootingStar(); // Dynamic spawning frequency
+            // 2. Shooting Stars Mechanics
+            if (Math.random() < 0.015) createShootingStar();
             
             for (let i = shootingStars.length - 1; i >= 0; i--) {
                 let ss = shootingStars[i];
@@ -331,34 +344,31 @@
                     continue;
                 }
 
-                // Smooth stroke mapping for long shooting trails
-                ctx.strokeStyle = `rgba(16, 185, 129, ${ss.opacity * 0.7})`;
-                ctx.lineWidth = 1.5;
+                ctx.strokeStyle = `rgba(56, 189, 248, ${ss.opacity * 0.5})`; // Matches new blue-white trail space
+                ctx.lineWidth = 1.2;
                 ctx.beginPath();
                 ctx.moveTo(ss.x, ss.y);
                 ctx.lineTo(ss.x - ss.len, ss.y - (ss.len * (ss.dy / ss.dx)));
                 ctx.stroke();
             }
 
-            // 3. Dynamic Comet Engine Tracking
-            if (Math.random() < 0.002) createComet(); // Ultra-rare cosmic generation loop
+            // 3. Comet Mechanics
+            if (Math.random() < 0.002) createComet();
             
             for (let i = comets.length - 1; i >= 0; i--) {
                 let c = comets[i];
                 c.x += c.speed;
                 c.y += (c.speed * (c.dy / c.dx));
 
-                // Remove once completely off-screen
                 if (c.x > canvas.width + c.tailLen) {
                     comets.splice(i, 1);
                     continue;
                 }
 
-                // Draw Comet Tail using a linear alpha fade out gradient direction
                 let grad = ctx.createLinearGradient(c.x, c.y, c.x - c.tailLen, c.y - (c.tailLen * (c.dy / c.dx)));
-                grad.addColorStop(0, 'rgba(52, 211, 153, 0.4)');
-                grad.addColorStop(0.2, 'rgba(16, 185, 129, 0.15)');
-                grad.addColorStop(1, 'rgba(16, 185, 129, 0)');
+                grad.addColorStop(0, 'rgba(14, 165, 233, 0.3)');
+                grad.addColorStop(0.3, 'rgba(56, 189, 248, 0.1)');
+                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
                 
                 ctx.strokeStyle = grad;
                 ctx.lineWidth = c.size * 1.5;
@@ -367,14 +377,13 @@
                 ctx.lineTo(c.x - c.tailLen, c.y - (c.tailLen * (c.dy / c.dx)));
                 ctx.stroke();
 
-                // Draw bright comet nucleus head node
-                ctx.fillStyle = 'rgba(209, 250, 229, 0.9)';
+                ctx.fillStyle = 'rgba(240, 249, 255, 0.9)';
                 ctx.beginPath();
                 ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
                 ctx.fill();
             }
 
-            // 4. Anchor points configuration for center Gemini constellation
+            // 4. Center-mapped Constellation Scaling
             const centerX = canvas.width * 0.5;
             const centerY = canvas.height * 0.45;
             const scale = Math.min(canvas.width, canvas.height) * 0.9;
@@ -387,9 +396,9 @@
                 };
             });
 
-            // Draw Constellation Lines Vector Structure
-            ctx.strokeStyle = 'rgba(16, 185, 129, 0.06)';
-            ctx.lineWidth = 1.2;
+            // Draw Vector Bones Connectivity
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.05)';
+            ctx.lineWidth = 1.0;
             geminiBones.forEach(bone => {
                 const p1 = nodes[bone[0]];
                 const p2 = nodes[bone[1]];
@@ -399,19 +408,21 @@
                 ctx.stroke();
             });
 
-            // Render Node Stars
+            // Render Multi-spectral Constellation Stars
             nodes.forEach(n => {
                 n.ref.phase += n.ref.speed;
-                let twinkle = 0.3 + (Math.sin(n.ref.phase) + 1) * 0.35;
+                let twinkle = 0.4 + (Math.sin(n.ref.phase) + 1) * 0.3;
                 
-                ctx.fillStyle = `rgba(52, 211, 153, ${twinkle * 0.25})`;
+                // Outer Spectral Atmospheric Flare
+                ctx.fillStyle = `${n.ref.colors.halo}${twinkle * 0.22})`;
                 ctx.beginPath();
-                ctx.arc(n.x, n.y, n.ref.r * 2.2, 0, Math.PI * 2);
+                ctx.arc(n.x, n.y, n.ref.r * 2.5, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.fillStyle = `rgba(209, 250, 229, ${twinkle * 0.95})`;
+                // Core Solid Structural Mass
+                ctx.fillStyle = `${n.ref.colors.core}${twinkle * 0.95})`;
                 ctx.beginPath();
-                ctx.arc(n.x, n.y, n.ref.r * 0.9, 0, Math.PI * 2);
+                ctx.arc(n.x, n.y, n.ref.r * 0.85, 0, Math.PI * 2);
                 ctx.fill();
             });
 
