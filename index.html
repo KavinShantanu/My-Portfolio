@@ -239,7 +239,7 @@
         </div>
     </section>
 
-    <!-- Contact Section (FLUSHED & TRANSLUCENT LOOK MATCHING THE HERO INTRO) -->
+    <!-- Contact Section -->
     <section id="contact" class="reveal-section py-40 max-w-7xl mx-auto px-6 relative z-10 border-t border-gray-900">
         <div class="max-w-4xl mx-auto text-center bg-gray-950/40 backdrop-blur-sm p-12 md:p-16 rounded-2xl relative z-10">
             <span class="text-emerald-400 font-mono text-base tracking-widest uppercase block mb-4 font-bold">What's Next?</span>
@@ -271,7 +271,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- Upgraded Deep Space Animation Script with Diagonal Satellites -->
+    <!-- Upgraded Deep Space Animation Script with Structural ISS Engine Rendering -->
     <script>
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
@@ -362,16 +362,15 @@
             }
         }
 
-        // Factory function for high-altitude diagonal satellites moving right to left
+        // Factory configuration generating a structural orbital pathing ISS satellite shape
         function createSatellite() {
-            if (satellites.length < 1) { // Minimalist limit cap
+            if (satellites.length < 1) { 
                 satellites.push({
-                    x: canvas.width + 50,
-                    y: Math.random() * canvas.height * 0.4,
-                    speed: Math.random() * 0.4 + 0.3, // Slow orbital velocity tracking
-                    dx: -1.5, // Moving firmly right to left
-                    dy: 0.6,   // Moving subtly downwards diagonally
-                    pulsePhase: 0
+                    x: canvas.width + 100,
+                    y: Math.random() * canvas.height * 0.3,
+                    speed: Math.random() * 0.3 + 0.25, // Soft majestic gliding motion vector metrics
+                    dx: -1.6, // Right to left
+                    dy: 0.55  // Top to bottom diagonal orientation path
                 });
             }
         }
@@ -428,40 +427,64 @@
                 ctx.fill();
             }
 
-            // Satellite Tracking Engine Loop (Right to Left Diagonal)
-            if (Math.random() < 0.005) createSatellite();
+            // High-Definition Vector Rendering Module for ISS Satellite Silhouette Tracking
+            if (Math.random() < 0.004) createSatellite();
             for (let i = satellites.length - 1; i >= 0; i--) {
                 let sat = satellites[i];
                 sat.x += sat.speed * sat.dx;
                 sat.y += sat.speed * sat.dy;
-                sat.pulsePhase += 0.05;
 
-                // Splice out if out of boundaries
-                if (sat.x < -50 || sat.y > canvas.height + 50) {
+                // De-spawn boundary condition limits
+                if (sat.x < -150 || sat.y > canvas.height + 150) {
                     satellites.splice(i, 1);
                     continue;
                 }
 
-                // Render faint minimalist path track line
-                ctx.strokeStyle = 'rgba(148, 163, 184, 0.03)';
-                ctx.lineWidth = 0.8;
+                ctx.save();
+                ctx.translate(sat.x, sat.y);
+                // Rotate canvas frame slightly alignment-wise to lock trajectory angles cleanly
+                ctx.rotate(Math.atan2(sat.dy, Math.dx) + Math.PI); 
+
+                // Minimalist backlit configuration silhouette styling matching deep space layout settings
+                ctx.fillStyle = 'rgba(241, 245, 249, 0.75)'; 
+                ctx.strokeStyle = 'rgba(241, 245, 249, 0.85)';
+                ctx.lineWidth = 1;
+
+                // 1. Core Structural Laboratory Truss Line
                 ctx.beginPath();
-                ctx.moveTo(sat.x + 150, sat.y - 60);
-                ctx.lineTo(sat.x - 150, sat.y + 60);
+                ctx.moveTo(-25, 0);
+                ctx.lineTo(25, 0);
                 ctx.stroke();
 
-                // Intermittent pulse emission glow
-                let pulse = 0.3 + (Math.sin(sat.pulsePhase) + 1) * 0.35;
-                ctx.fillStyle = `rgba(56, 189, 248, ${pulse * 0.4})`;
-                ctx.beginPath();
-                ctx.arc(sat.x, sat.y, 3.5, 0, Math.PI * 2);
-                ctx.fill();
+                // 2. Central Habitation Pressure Modules
+                ctx.fillRect(-6, -3, 12, 6);
+                ctx.fillRect(-2, -5, 4, 10);
 
-                // Crisp pinpoint core node
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-                ctx.beginPath();
-                ctx.arc(sat.x, sat.y, 1.2, 0, Math.PI * 2);
-                ctx.fill();
+                // 3. Solar Array Wings (Left Wing Pair Array Vector Configuration)
+                ctx.fillStyle = 'rgba(148, 163, 184, 0.35)'; // Semitransparent reflective photovoltaic hue
+                ctx.fillRect(-22, -14, 4, 10);
+                ctx.fillRect(-22, 4, 4, 10);
+                ctx.fillRect(-16, -14, 4, 10);
+                ctx.fillRect(-16, 4, 4, 10);
+
+                // 4. Solar Array Wings (Right Wing Pair Array Vector Configuration)
+                ctx.fillRect(12, -14, 4, 10);
+                ctx.fillRect(12, 4, 4, 10);
+                ctx.fillRect(18, -14, 4, 10);
+                ctx.fillRect(18, 4, 4, 10);
+
+                // 5. Array Attachment Outriggers Structural Boundaries
+                ctx.strokeStyle = 'rgba(148, 163, 184, 0.5)';
+                ctx.strokeRect(-22, -14, 4, 10);
+                ctx.strokeRect(-22, 4, 4, 10);
+                ctx.strokeRect(-16, -14, 4, 10);
+                ctx.strokeRect(-16, 4, 4, 10);
+                ctx.strokeRect(12, -14, 4, 10);
+                ctx.strokeRect(12, 4, 4, 10);
+                ctx.strokeRect(18, -14, 4, 10);
+                ctx.strokeRect(18, 4, 4, 10);
+
+                ctx.restore();
             }
 
             // Constellation Scaling Blueprint Layout
