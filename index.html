@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kavin Shantanu | Quality Engineer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         html { scroll-behavior: smooth; }
@@ -48,8 +50,10 @@
 </head>
 <body class="bg-gray-950 text-slate-100 font-sans antialiased selection:bg-emerald-500/30 text-[16px] md:text-[18px]">
 
+    <!-- Interactive Space Background Layer -->
     <canvas id="starCanvas"></canvas>
 
+    <!-- Navbar -->
     <nav class="fixed top-0 w-full bg-gray-950/90 backdrop-blur-md z-50 border-b border-gray-900">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
             <span class="text-2xl font-bold tracking-wider text-emerald-400 font-mono">KAVIN.S</span>
@@ -63,13 +67,15 @@
         </div>
     </nav>
 
+    <!-- Hero / Intro Section (GLASS STYLE BACKDROP) -->
     <section id="hero" class="min-h-screen flex items-center justify-center pt-20 px-6">
         <div class="text-center max-w-4xl mx-auto bg-gray-950/40 backdrop-blur-sm p-8 rounded-2xl relative z-10">
             <span class="text-emerald-400 font-mono text-base tracking-widest uppercase block mb-4 animate-pulse">Hi, my name is</span>
             <h1 class="text-6xl md:text-8xl font-extrabold text-slate-100 tracking-tight mb-6">Kavin Shantanu</h1>
             
+            <!-- Typewriter Heading Tag Integration -->
             <h2 class="text-4xl md:text-5xl font-bold text-slate-400 mb-8 min-h-[50px] md:min-h-[60px]">
-            <span id="typewriter" class="text-slate-100 tracking-wide"></span><span class="text-emerald-400 animate-pulse font-light">|</span>
+                I <span id="typewriter" class="text-slate-100 tracking-wide"></span><span class="text-emerald-400 animate-pulse font-light">|</span>
             </h2>
             
             <p class="text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
@@ -77,13 +83,14 @@
             </p>
             <div class="flex flex-wrap justify-center gap-6">
                 <a href="#projects" class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded text-lg transition-all duration-200 shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20 transform hover:-translate-y-0.5">View My Work</a>
-                <a href="resume.pdf" download="Kavin_Shantanu_Resume.pdf" class="px-8 py-4 border border-emerald-500 text-emerald-400 font-semibold rounded text-lg transition-all duration-200 hover:bg-emerald-500/10 flex items-center gap-3 transform hover:-translate-y-0.5">
+                <a href="https://raw.githubusercontent.com/KavinShantanu/My-Portfolio/main/resume.pdf" download="Kavin_Shantanu_Resume.pdf" class="px-8 py-4 border border-emerald-500 text-emerald-400 font-semibold rounded text-lg transition-all duration-200 hover:bg-emerald-500/10 flex items-center gap-3 transform hover:-translate-y-0.5">
                     <i class="fa-solid fa-download text-base"></i> Download Resume
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- About Section (SOLID BACKDROP BASELINE) -->
     <section id="about" class="reveal-section py-32 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 border-t border-gray-900 relative z-10">
         <h2 class="text-4xl font-bold text-slate-100 mb-12 flex items-center gap-4">
             <i class="fa-solid fa-user text-emerald-400 text-2xl"></i> About Me
@@ -111,32 +118,38 @@
         </div>
     </section>
 
+    <!-- Skills Section (SOLID BACKGROUND AS PER IMAGE_A1E984.PNG) -->
     <section id="skills" class="reveal-section py-32 border-t border-gray-900 relative z-10">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <h2 class="text-4xl font-bold text-slate-100 mb-16 flex items-center gap-4">
                 <i class="fa-solid fa-layer-group text-emerald-400 text-2xl"></i> Technical Arsenal
             </h2>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Box 1 -->
                 <div class="bg-gray-900 border border-gray-800 p-8 rounded-xl hover:bg-gradient-to-br hover:from-gray-900 hover:to-emerald-950/50 hover:border-emerald-500/30 transition-all duration-300 shadow-md relative z-20 group">
                     <div class="text-slate-600 text-3xl mb-5 group-hover:text-emerald-400 transition-colors duration-300"><i class="fa-solid fa-code"></i></div>
                     <h3 class="text-xl font-bold text-slate-200 mb-4">Automation & Scripts</h3>
                     <p class="text-base text-slate-400 leading-relaxed">Selenium (Java, C#), BDD Framework, Cognizant's Craft Framework.</p>
                 </div>
+                <!-- Box 2 -->
                 <div class="bg-gray-900 border border-gray-800 p-8 rounded-xl hover:bg-gradient-to-br hover:from-gray-900 hover:to-emerald-950/50 hover:border-emerald-500/30 transition-all duration-300 shadow-md relative z-20 group">
                     <div class="text-slate-600 text-3xl mb-5 group-hover:text-emerald-400 transition-colors duration-300"><i class="fa-solid fa-network-wired"></i></div>
                     <h3 class="text-xl font-bold text-slate-200 mb-4">API & Backend Testing</h3>
                     <p class="text-base text-slate-400 leading-relaxed">Postman, SoapUI, Swagger, REST/SOAP backend testing.</p>
                 </div>
+                <!-- Box 3 -->
                 <div class="bg-gray-900 border border-gray-800 p-8 rounded-xl hover:bg-gradient-to-br hover:from-gray-900 hover:to-emerald-950/50 hover:border-emerald-500/30 transition-all duration-300 shadow-md relative z-20 group">
                     <div class="text-slate-600 text-3xl mb-5 group-hover:text-emerald-400 transition-colors duration-300"><i class="fa-solid fa-robot"></i></div>
                     <h3 class="text-xl font-bold text-slate-200 mb-4">AI & Next-Gen Tools</h3>
                     <p class="text-base text-slate-400 leading-relaxed">No-code prototyping and AI script accelerators using GitHub Copilot & Cursor.</p>
                 </div>
+                <!-- Box 4 -->
                 <div class="bg-gray-900 border border-gray-800 p-8 rounded-xl hover:bg-gradient-to-br hover:from-gray-900 hover:to-emerald-950/50 hover:border-emerald-500/30 transition-all duration-300 shadow-md relative z-20 group">
                     <div class="text-slate-600 text-3xl mb-5 group-hover:text-emerald-400 transition-colors duration-300"><i class="fa-solid fa-list-check"></i></div>
                     <h3 class="text-xl font-bold text-slate-200 mb-4">Lifecycle & Domains</h3>
                     <p class="text-base text-slate-400 leading-relaxed">Agile/Waterfall, SIT, E2E, Regression, Telecom BSS, Ecommerce.</p>
                 </div>
+                <!-- Box 5 -->
                 <div class="bg-gray-900 border border-gray-800 p-8 rounded-xl hover:bg-gradient-to-br hover:from-gray-900 hover:to-emerald-950/50 hover:border-emerald-500/30 transition-all duration-300 shadow-md relative z-20 group">
                     <div class="text-slate-600 text-3xl mb-5 group-hover:text-emerald-400 transition-colors duration-300"><i class="fa-solid fa-square-poll-horizontal"></i></div>
                     <h3 class="text-xl font-bold text-slate-200 mb-4">Management & Logs</h3>
@@ -146,12 +159,14 @@
         </div>
     </section>
 
+    <!-- Experience Timeline (SOLID BACKGROUND MATCHING DESIGN SCHEME) -->
     <section id="experience" class="reveal-section py-32 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 border-t border-gray-900 relative z-10">
         <h2 class="text-4xl font-bold text-slate-100 mb-16 flex items-center gap-4">
             <i class="fa-solid fa-briefcase text-emerald-400 text-2xl"></i> Professional Background
         </h2>
         <div class="space-y-16 relative before:absolute before:inset-0 before:left-4 before:md:left-1/2 before:w-0.5 before:bg-gray-800">
             
+            <!-- Timeline Item 1 -->
             <div class="relative flex flex-col md:flex-row items-start md:justify-between group">
                 <div class="absolute left-4 md:left-1/2 w-5 h-5 rounded-full bg-emerald-400 -translate-x-1.5 md:-translate-x-2.5 border-4 border-gray-950 z-20 shadow-sm shadow-emerald-400"></div>
                 <div class="w-full md:w-[44%] pl-10 md:pl-0 md:text-right">
@@ -172,6 +187,7 @@
                 </div>
             </div>
 
+            <!-- Timeline Item 2 -->
             <div class="relative flex flex-col md:flex-row items-start md:justify-between group">
                 <div class="absolute left-4 md:left-1/2 w-5 h-5 rounded-full bg-gray-800 group-hover:bg-emerald-400 -translate-x-1.5 md:-translate-x-2.5 border-4 border-gray-950 z-20 transition-colors duration-300"></div>
                 <div class="w-full md:w-[44%] pl-10 md:pl-0 md:text-right md:order-last">
@@ -194,6 +210,7 @@
         </div>
     </section>
 
+    <!-- Projects Section (SOLID BACKGROUND LAYOUT CONFIGURATION) -->
     <section id="projects" class="reveal-section py-32 border-t border-gray-900 relative z-10">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <h2 class="text-4xl font-bold text-slate-100 mb-16 flex items-center gap-4">
@@ -240,7 +257,7 @@
         </div>
     </section>
 
-  <!-- Contact Section -->
+    <!-- Contact Section (RETAINS FLUSHED GLASS Backlit Configuration Setup) -->
     <section id="contact" class="reveal-section py-40 max-w-7xl mx-auto px-6 relative z-10 border-t border-gray-900">
         <div class="max-w-4xl mx-auto text-center bg-gray-950/40 backdrop-blur-sm p-12 md:p-16 rounded-2xl relative z-10">
             <span class="text-emerald-400 font-mono text-base tracking-widest uppercase block mb-4 font-bold">What's Next?</span>
@@ -250,16 +267,14 @@
             </p>
             
             <div class="flex justify-center space-x-8 text-3xl mb-10 relative z-30">
-                <!-- UPDATED LINK: Opens Gmail directly in a new browser tab, bypassing the Windows pop-up -->
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kavinshantanu.1703035@gmail.com" target="_blank" class="text-slate-400 hover:text-emerald-400 transition-colors duration-200" title="Email"><i class="fa-solid fa-envelope"></i></a>
                 <a href="https://linkedin.com" target="_blank" class="text-slate-400 hover:text-emerald-400 transition-colors duration-200" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="https://github.com/KavinShantanu" target="_blank" class="text-slate-400 hover:text-emerald-400 transition-colors duration-200" title="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6 relative z-30">
-                <!-- UPDATED LINK: Opens Gmail directly in a new browser tab, bypassing the Windows pop-up -->
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kavinshantanu.1703035@gmail.com" target="_blank" class="w-full sm:w-auto px-10 py-4 border border-emerald-400 text-emerald-400 font-bold rounded hover:bg-emerald-400/10 transition-all font-mono tracking-wide text-base">Say Hello</a>
-                <a href="resume.pdf" download="Kavin_Shantanu_Resume.pdf" class="w-full sm:w-auto px-8 py-4 bg-slate-900/60 border border-slate-800 text-slate-300 font-mono text-xs tracking-wider uppercase rounded font-bold hover:border-emerald-500/40 transition-all flex items-center justify-center gap-2">
+                <a href="https://raw.githubusercontent.com/KavinShantanu/My-Portfolio/main/resume.pdf" download="Kavin_Shantanu_Resume.pdf" class="w-full sm:w-auto px-8 py-4 bg-slate-900/60 border border-slate-800 text-slate-300 font-mono text-xs tracking-wider uppercase rounded font-bold hover:border-emerald-500/40 transition-all flex items-center justify-center gap-2">
                     <i class="fa-solid fa-download text-sm"></i> Download CV
                 </a>
             </div>
@@ -274,6 +289,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
+    <!-- Space Background Animation & UI Automation Script -->
     <script>
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
@@ -519,7 +535,7 @@
         resize();
         draw();
 
-        // --- SCROLL REVEAL & NAVBAR ACTIVE GLOW ENGINE ---
+        // --- HIGH-ACCURACY SCROLL TRACKING & NAV GLOW OBSERVER ---
         const sections = document.querySelectorAll('section, id');
         const navLinks = document.querySelectorAll('.nav-link');
         
@@ -562,7 +578,7 @@
         });
         bttButton.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-        // --- TYPEWRITER LOOPER ARRAYS MATRIX (5 DOMAIN CHANGES ONLY) ---
+        // --- DYNAMIC TYPEWRITER INSPIRED ACCELERATOR LOOP ---
         const words = [
             "Quality Engineer",
             "Automation Engineer",
